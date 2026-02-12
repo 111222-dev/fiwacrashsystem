@@ -66,15 +66,10 @@
     const button = document.getElementById("continueBtn");
     const overlay = document.getElementById("overlayImage");
     const box = document.getElementById("mainBox");
-    let reload = true;
 
     function showOverlayAndHideButton() {
     button.style.display = "none";
     overlay.style.display = "block";
-    
-    while (reload) {
-    location.reload();
-    }
     
     function enterFullscreen() {
     document.documentElement.requestFullscreen().catch(function (err) {
@@ -98,6 +93,12 @@
     button.addEventListener("click", () => {
         showOverlayAndHideButton();
         // After 2 seconds, apply blur + resize
+        setTimeout(() => {
+            box.style.backdropFilter = 'blur(1px)';
+            box.style.webkitBackdropFilter = 'blur(10px)';
+            box.style.width = '1000px';
+            box.style.height = '1000px';
+        }, 2000);
     });
 </script>
 
